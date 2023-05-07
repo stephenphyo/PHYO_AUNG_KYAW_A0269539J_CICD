@@ -7,6 +7,7 @@ on:
 jobs:
   build_golang:
    runs-on: ubuntu-latest
+   if: "!startsWith(github.event.head_commit.message, '#NORUN')"
 
    steps:
     - name: Checkout
