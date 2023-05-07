@@ -45,7 +45,7 @@ jobs:
                 "fields": [
                   {
                     "type": "mrkdwn",
-                    "text": "*Name:* Phyo Aung Kyaw @ Stephen"
+                    "text": "*Name:* PHYO AUNG KYAW"
                   },
                   {
                     "type": "mrkdwn",
