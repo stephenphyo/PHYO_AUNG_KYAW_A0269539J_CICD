@@ -24,3 +24,63 @@ jobs:
       run: railway up
       env:
        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+
+    - name: Send Notification Message to Slack Channel
+      id: slack
+      uses: slackapi/slack-github-action@v1.23.0
+      with:
+        payload: |
+          {
+            "blocks": [
+              {
+                "type": "header",
+                "text": {
+                  "type": "plain_text",
+                  "text": "DipSA 56 CI/CD Submission"
+                }
+              },
+              {
+                "type": "section",
+                "fields": [
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Name:* Phyo Aung Kyaw @ Stephen"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Email: stephenphyo2019.official@gmail.com*"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Metriculation:* A0269539J"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "*Repository:* https://github.com/stephenphyo/stephenphyo_cicd"
+                  },
+                  {
+                    "type": "mrkdwn",
+                    "text": "https://stephenphyocicd-production.up.railway.app"
+                  }
+                ]
+              },
+              {
+                "type": "section",
+                "text": {
+                  "type": "plain_text",
+                  "text": " "
+                },
+                "accessory": {
+                  "type": "button",
+                  "text": {
+                    "type": "plain_text",
+                    "text": "GO"
+                  },
+                  "url": "https://stephenphyocicd-production.up.railway.app"
+                }
+              }
+            ]
+          }
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        SLACK_WEBHOOK_TYPE: INCOMING_WEBHOOK
