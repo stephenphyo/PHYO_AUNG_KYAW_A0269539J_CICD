@@ -1,0 +1,13 @@
+name: Stephen Phyo's CI/CD
+on:
+  push:
+    branches:
+    - 'release/v[1-9].[0-9]+'
+
+jobs:
+  build_golang:
+   runs-on: ubuntu-latest
+
+   steps:
+    - name: Checkout
+      uses: actions/checkout@v3
